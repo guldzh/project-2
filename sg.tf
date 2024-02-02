@@ -4,6 +4,10 @@ resource "aws_security_group" "ecs_sg" {
   description = "Security group for ECS service"
   vpc_id      = aws_vpc.main.id # Specify your VPC ID
 
+  tags = {
+    Name = "project-ecs-sg"
+  }
+
   # Inbound rules
   ingress {
     from_port       = 80
@@ -17,51 +21,6 @@ resource "aws_security_group" "ecs_sg" {
     to_port         = 443
     protocol        = "tcp"
     security_groups = [aws_security_group.alb_sg.id]
-  }
-
-  ingress {
-    from_port   = 4000
-    to_port     = 4000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 4000
-    to_port     = 4000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port   = 5000
-    to_port     = 5000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port   = 2377
-    to_port     = 2377
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port   = 4789
-    to_port     = 4789
-    protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port   = 7946
-    to_port     = 7946
-    protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Outbound rules
@@ -98,5 +57,8 @@ resource "aws_security_group" "alb_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"] # Allow outbound traffic to anywhere
+  }
+  tags = {
+    Name = "project-alb-sg"
   }
 }
