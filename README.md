@@ -26,12 +26,19 @@ A GitHub workflow has been set up to run Terraform code, automating the infrastr
    - Route Tables
 
 2. **Security Groups**
+   - ECS Security Groups
+     - Ingress and Egress rules configured for ECS requirements.
+   - ALB Security Group
+     - Ingress rules for ALB communication.
 
-3. **IAM Role**
+4. **IAM Role**
+   - IAM Role with `actions = ["sts:AssumeRole"]`
+   - Attached `service-role/AmazonECSTaskExecutionRolePolicy` for ECS execution.
 
-4. **Application Load Balancer**
+5. **Application Load Balancer**
+   - ALB with Listeners and Target Groups configured.
 
-5. **ECS Cluster:**
+6. **ECS Cluster:**
    - ECS Service
    - ECS Tasks
 
