@@ -37,10 +37,20 @@ A GitHub workflow has been set up to run Terraform code, automating the infrastr
 
 5. **Application Load Balancer**
    - ALB with Listeners and Target Groups configured.
+   - ALB Security Group
+     - Ingress rules for ALB communication.
 
 6. **ECS Cluster:**
    - ECS Service
    - ECS Tasks
+
+7. **Terraform State Storage:**
+   - Utilized an S3 bucket for storing the Terraform state file.
+
+## Terraform State Management
+
+The Terraform state file is stored remotely in an S3 bucket. This ensures centralized state management and collaboration among team members.
+
 
 ## Getting Started
 
