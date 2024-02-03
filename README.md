@@ -1,25 +1,56 @@
-# ECS-with-Terraform
+# Docker-ECS-Terraform
 
-Tasks:
+This project demonstrates the deployment of NGINX on AWS ECS with Fargate Launch Type using Terraform.
 
-1. Pull NGNIX image from Docker Hub Registry, and create container using AWS ECS with Fargate Launch Type Using Terraform.
-    1. The ECS Fargate can be deployed on Private/Public Subenet.
-    2. Image should be read from Docker Hub Registry.
+## Tasks
 
-2. Create a GitHub workflow to run Terraform code
+### 1. Deploy NGINX on AWS ECS
 
-### List of created resources
+#### 1.1 Fargate Deployment
 
-1. VPC:
-   1. Public Subnets
-   2. Private Subnets
-   3. Internet Gateway
-   4. NAT Gateway
-   5. Route Tables
+Pull NGINX image from Docker Hub Registry and create a container using AWS ECS with Fargate Launch Type. Choose between deployment on Private or Public Subnets.
 
-2. Security Groups
-3. IAM Role
-4. Application Load Balancer
-5. ECS Cluster
-   1. ECS Service
-   2. ECS tasks
+**Note:** Ensure that the NGINX image is read from the Docker Hub Registry.
+
+### 2. GitHub Workflow for Terraform
+
+A GitHub workflow has been set up to run Terraform code, automating the infrastructure deployment process.
+
+## List of Created Resources
+
+1. **VPC:**
+   - Public Subnets
+   - Private Subnets
+   - Internet Gateway
+   - NAT Gateway
+   - Route Tables
+
+2. **Security Groups**
+
+3. **IAM Role**
+
+4. **Application Load Balancer**
+
+5. **ECS Cluster:**
+   - ECS Service
+   - ECS Tasks
+
+## Getting Started
+
+To deploy NGINX on AWS ECS and set up the infrastructure, follow the steps below:
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/guldzh/project-2.git
+2. Navigate to the project directory:
+   cd Docker-ECS-Terraform
+3. Customize the Terraform variables in variables.tf to match your requirements.
+
+4. Run the Terraform commands:
+      terraform init
+      terraform apply -auto-approve
+   Note: Provide any required variables during the terraform apply command.
+
+5. Monitor the Terraform deployment process.
+6. Access your NGINX application on AWS ECS.
