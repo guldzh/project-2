@@ -54,7 +54,7 @@ To deploy NGINX on AWS ECS and set up the infrastructure, follow the steps below
    ```bash
    terraform init
    terraform apply -auto-approve
-   Note: Provide any required variables during the terraform apply command.
+Note: Provide any required variables during the terraform apply command.
 
 7. Monitor the Terraform deployment process.
 8. Access your NGINX application on AWS ECS.
