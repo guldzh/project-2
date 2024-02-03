@@ -78,7 +78,8 @@ resource "aws_eip" "nat_gateway_eip" {
 }
 
 resource "aws_nat_gateway" "nat" {
-  subnet_id     = aws_subnet.public_subnet[0].id 
+  allocation_id = aws_eip.nat_gateway_eip.id
+  subnet_id     = aws_subnet.public_subnet[0].id
   tags = {
     Name = "project-nat"
   }
