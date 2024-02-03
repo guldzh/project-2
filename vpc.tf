@@ -84,8 +84,15 @@ resource "aws_nat_gateway" "nat" {
     Name = "project-nat"
   }
 }
+
 resource "aws_route" "private_subnet_route_to_nat" {
   route_table_id         = aws_route_table.private_route_table.id
   nat_gateway_id         = aws_nat_gateway.nat.id
   destination_cidr_block = "0.0.0.0/0"
+}
+
+# Associate EIP with NAT Gateway
+resource "aws_nat_gateway" "eip_association" {
+  allocation_id = aws_eip.nat_gateway_eip.id
+  subnet_id     = aws_subnet.public_subnet[0].id  # Assuming your NAT Gateway is in the first public subnet
 }
