@@ -14,6 +14,16 @@ resource "aws_eks_cluster" "eks-cluster" {
   ]
 }
 
+resource "aws_eks_addon" "cni" {
+  cluster_name = aws_eks_cluster.example.name
+  addon_name   = "vpc-cni"
+}
+
+resource "aws_eks_addon" "csi" {
+  cluster_name = aws_eks_cluster.example.name
+  addon_name   = "aws-ebs-csi-driver"
+}
+
 output "endpoint" {
   value = aws_eks_cluster.example.endpoint
 }
@@ -21,3 +31,4 @@ output "endpoint" {
 output "kubeconfig-certificate-authority-data" {
   value = aws_eks_cluster.example.certificate_authority[0].data
 }
+
