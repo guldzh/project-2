@@ -1,6 +1,9 @@
 resource "aws_eks_cluster" "eks-cluster" {
   name     = "eks-cluster"
   role_arn = aws_iam_role.example.arn
+  node_group_name      = "workers"
+  node_group_desired_capacity = 1
+  node_group_instance_type   = "t3.medium"
 
   vpc_config {
     subnet_ids = [aws_subnet.example1.id, aws_subnet.example2.id]
