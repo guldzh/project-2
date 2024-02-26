@@ -51,7 +51,7 @@ output "endpoint" {
 }
 
 output "kubeconfig" {
-  value = aws_eks_cluster_auth.eks_auth.kubeconfig
+  value = data.aws_eks_cluster_auth.eks_auth.kubeconfig
 }
 
 #output "kubeconfig-certificate-authority-data" {
