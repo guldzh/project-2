@@ -6,7 +6,7 @@ resource "aws_eks_cluster" "eks-cluster" {
   node_group_instance_type   = "t3.medium"
 
   vpc_config {
-    subnet_ids = [aws_subnet.example1.id, aws_subnet.example2.id]
+    subnet_ids = [aws_subnet.private_subnets1.id, aws_subnet.private_subnets2.id,aws_subnet.private_subnets3.id]
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
