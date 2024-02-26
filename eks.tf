@@ -14,7 +14,7 @@ resource "aws_eks_cluster" "eks" {
     endpoint_private_access = true
 
     # Indicates whether or not the Amazon EKS public API server endpoint is enabled
-    endpoint_public_access = false
+    endpoint_public_access = true
 
     # Must be in at least two different availability zones
     subnet_ids = [
