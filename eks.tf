@@ -52,6 +52,7 @@ output "endpoint" {
 
 output "kubeconfig" {
   value = module.eks-kubeconfig.kubeconfig
+  sensitive = true
 }
 
 #output "kubeconfig-certificate-authority-data" {
