@@ -71,8 +71,7 @@ resource "aws_eks_node_group" "nodes_general" {
   # (where CLUSTER_NAME is replaced with the name of the EKS Cluster).
   subnet_ids = [
     aws_subnet.private_subnet[1].id,
-    aws_subnet.private_subnet[2].id,
-    aws_subnet.private_subnet[3].id
+    aws_subnet.private_subnet[2].id
   ]
 
   # Configuration block with scaling settings
