@@ -42,11 +42,19 @@ resource "aws_eks_addon" "csi" {
   addon_name   = "aws-ebs-csi-driver"
 }
 
+data "aws_eks_cluster_auth" "eks_auth" {
+  name = "eks_auth"
+}
+
 output "endpoint" {
   value = aws_eks_cluster.eks.endpoint
 }
 
-output "kubeconfig-certificate-authority-data" {
-  value = aws_eks_cluster.eks.certificate_authority[0].data
+output "kubeconfig" {
+  value = aws_eks_cluster_auth.eks_auth.kubeconfig
 }
+
+#output "kubeconfig-certificate-authority-data" {
+#  value = aws_eks_cluster.eks.certificate_authority[0].data
+#}
 
