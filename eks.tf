@@ -11,10 +11,10 @@ resource "aws_eks_cluster" "eks" {
 
   vpc_config {
     # Indicates whether or not the Amazon EKS private API server endpoint is enabled
-    endpoint_private_access = false
+    endpoint_private_access = true
 
     # Indicates whether or not the Amazon EKS public API server endpoint is enabled
-    endpoint_public_access = true
+    endpoint_public_access = false
 
     # Must be in at least two different availability zones
     subnet_ids = [
