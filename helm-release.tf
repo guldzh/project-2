@@ -19,7 +19,7 @@ resource "helm_release" "lb" {
 
   set {
     name  = "serviceAccount.create"
-    value = "false"
+    value = "true"
   }
 
   set {
