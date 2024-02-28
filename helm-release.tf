@@ -5,7 +5,7 @@ resource "helm_release" "lb" {
   version    = "1.7.1"
   namespace  = "kube-system"
   depends_on = [
-    kubernetes_service_account.service-account,
+    #kubernetes_service_account.service-account,
     aws_eks_cluster.eks,                                                                                                                            
     aws_eks_node_group.nodes_general
   ]
@@ -22,7 +22,7 @@ resource "helm_release" "lb" {
 
   set {
     name  = "serviceAccount.create"
-    value = "true"
+    value = "false"
   }
 
   set {
