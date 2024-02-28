@@ -6,7 +6,7 @@ module "lb_role" {
 
   oidc_providers = {
     main = {
-      provider_arn               = "arn:aws:iam::381491903855:role/eks-cluster-example"
+      provider_arn               = "arn:aws:iam::381491903855:oidc-provider/example.oidcprovider.com"
       namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
     }
   }
