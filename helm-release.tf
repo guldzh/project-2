@@ -6,6 +6,8 @@ resource "helm_release" "lb" {
   namespace  = "kube-system"
   depends_on = [
     kubernetes_service_account.service-account
+    aws_eks_cluster.eks                                                                                                                            
+    aws_eks_node_group.nodes_general
   ]
 
   set {
@@ -32,9 +34,4 @@ resource "helm_release" "lb" {
     name  = "clusterName"
     value = aws_eks_cluster.eks.name
   }
-
-  depends_on = [
-    aws_eks_cluster.eks                                                                                                                            
-    aws_eks_node_group.nodes_general
-  ]
 }
