@@ -9,7 +9,7 @@ resource "kubernetes_cluster_role_binding" "example" {
   }
   subject {
     kind      = "User"
-    name      = "admin"
+    name      = "guliya"
     api_group = "rbac.authorization.k8s.io"
   }
   subject {
