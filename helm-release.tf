@@ -5,8 +5,8 @@ resource "helm_release" "lb" {
   version    = "1.7.1"
   namespace  = "kube-system"
   depends_on = [
-    kubernetes_service_account.service-account
-    aws_eks_cluster.eks                                                                                                                            
+    kubernetes_service_account.service-account,
+    aws_eks_cluster.eks,                                                                                                                            
     aws_eks_node_group.nodes_general
   ]
 
