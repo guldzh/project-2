@@ -9,22 +9,6 @@ data "aws_iam_policy_document" "assume_role" {
 
     actions = ["sts:AssumeRole"]
   }
-
-  statement {
-    effect = "Allow"
-
-    principals {
-      type        = "Service"
-      identifiers = ["eks.amazonaws.com"]
-    }
-
-    actions = [
-      "iam:CreateServiceAccount",
-      "iam:DeleteServiceAccount",
-      "iam:UpdateServiceAccount",
-      "iam:ListServiceAccountsWithContext"
-    ]
-}
 }
 
 resource "aws_iam_role" "example" {
