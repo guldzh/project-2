@@ -18,7 +18,7 @@ provider "kubernetes" {
   token                  = data.aws_eks_cluster_auth.eks_auth.token
   exec {
     api_version = "client.authentication.k8s.io/v1beta1"
-    args        = ["eks", "get-token", "--cluster-name", "eks"]
+    args        = ["eks", "get-token", "--cluster-name", "eks", "services"]
     command     = "aws"
   }
 }
@@ -29,7 +29,7 @@ provider "helm" {
     cluster_ca_certificate = base64decode(aws_eks_cluster.eks.certificate_authority[0].data)
     exec {
       api_version = "client.authentication.k8s.io/v1beta1"
-      args        = ["eks", "get-token", "--cluster-name", "eks"]
+      args        = ["eks", "get-token", "--cluster-name", "eks", "services"]
       command     = "aws"
     }
   }
