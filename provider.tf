@@ -23,7 +23,7 @@ provider "kubernetes" {
   }
 }
 
-/*provider "helm" {
+provider "helm" {
   kubernetes {
     host                   = aws_eks_cluster.eks.endpoint
     cluster_ca_certificate = base64decode(aws_eks_cluster.eks.certificate_authority[0].data)
@@ -49,4 +49,4 @@ resource "kubernetes_service_account" "service-account" {
     }
   }
 }
-*/
+
