@@ -41,5 +41,5 @@ resource "kubernetes_cluster_role" "admin_role" {
     "update", "create"]
   }
 
-  depends_on = [aws_eks_node_group.cluster_node_group]
+  depends_on = [aws_eks_node_group.nodes_general]
 }
