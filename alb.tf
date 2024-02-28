@@ -1,4 +1,4 @@
-module "lb_role" {
+/*module "lb_role" {
   source    = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
 
   role_name = "eks_lb"
@@ -11,3 +11,4 @@ module "lb_role" {
     }
   }
 }
+*/
