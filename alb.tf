@@ -10,5 +10,9 @@ module "lb_role" {
       namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
     }
   }
+depends_on = [
+    aws_eks_cluster.eks                                                                                                                            
+    aws_eks_node_group.nodes_general
+  ]
 }
 
