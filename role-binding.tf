@@ -1,4 +1,4 @@
-resource "kubernetes_cluster_role_binding" "example" {
+/*resource "kubernetes_cluster_role_binding" "example" {
   metadata {
     name = "terraform-example"
   }
@@ -22,4 +22,4 @@ resource "kubernetes_cluster_role_binding" "example" {
     name      = "system:masters"
     api_group = "rbac.authorization.k8s.io"
   }
-}
+}*/
