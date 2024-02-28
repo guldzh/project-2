@@ -1,4 +1,4 @@
-/*resource "helm_release" "lb" {
+resource "helm_release" "lb" {
   name       = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
@@ -32,4 +32,4 @@
     name  = "clusterName"
     value = aws_eks_cluster.eks.name
   }
-}*/
+}
