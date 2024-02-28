@@ -20,6 +20,7 @@ statement {
       "iam:ListServiceAccountsWithContext"
     ]
 }
+}
 
 resource "aws_iam_role" "example" {
   name               = "eks-cluster-example"
