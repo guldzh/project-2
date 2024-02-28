@@ -33,7 +33,7 @@ resource "helm_release" "lb" {
     value = aws_eks_cluster.eks.name
   }
 
-depends_on = [
+  depends_on = [
     aws_eks_cluster.eks                                                                                                                            
     aws_eks_node_group.nodes_general
   ]
