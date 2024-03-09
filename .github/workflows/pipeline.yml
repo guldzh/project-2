@@ -3,11 +3,16 @@ name: Terraform Workflow
 on:
   push:
     branches:
-      - eks
+      - main 
+  pull_request:
+    branches:
+      - main
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
+
+      # Replace with your desired Terraform version something
 
     steps:
     - name: Checkout Repository
@@ -15,6 +20,8 @@ jobs:
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
 
     - name: Configure AWS credentials
       run: |
@@ -25,18 +32,32 @@ jobs:
     - name: Initialize Terraform
       run: terraform init
 
-    - name: Format Terraform code
-      run: terraform fmt
-
     - name: Terraform Plan
       run: terraform plan
-      
+
+    - name: Terraform Apply
+      run: terraform apply  --auto-approve
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: Update kubeconfig
+      run: aws eks update-kubeconfig --region us-east-2 --name techtorial-eks-eYiIJeXz
+
+    - name: Install Helm
+      run: |
+        curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+        chmod +x get_helm.sh
+        ./get_helm.sh
+
+    - name: Deploy Helm Chart
+      run: |
+        helm repo add harbor https://helm.goharbor.io
+        helm uninstall my-harbor
+        helm install my-harbor harbor/harbor --version 1.14.0 -n harbor
     #- name: Terraform destroy
     #  run: terraform destroy -auto-approve
-    
-    - name: Terraform Refresh
-      run: terraform refresh
-
-    - name: Terraform Apply (auto-approve)
-      run: terraform apply -auto-approve
-   
