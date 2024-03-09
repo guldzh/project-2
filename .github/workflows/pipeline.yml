@@ -57,7 +57,7 @@ jobs:
     - name: Deploy Helm Chart
       run: |
          helm repo add hashicorp https://helm.releases.hashicorp.com
-         helm install my-vault hashicorp/vault --version 0.27.0 -n vault
+         helm install my-vault hashicorp/vault --version 0.27.0 -n default
 
        
     #- name: Terraform destroy
