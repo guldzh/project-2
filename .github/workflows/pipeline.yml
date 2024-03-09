@@ -59,6 +59,7 @@ jobs:
          helm repo add hashicorp https://helm.releases.hashicorp.com
          helm install my-vault hashicorp/vault --version 0.27.0 -n default
 
+
        
     #- name: Terraform destroy
     #  run: terraform destroy -auto-approve
