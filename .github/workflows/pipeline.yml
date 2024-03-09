@@ -31,12 +31,12 @@ jobs:
     - name: Terraform Plan
       run: terraform plan
       
-    - name: Terraform destroy
-      run: terraform destroy -auto-approve
+    #- name: Terraform destroy
+    #  run: terraform destroy -auto-approve
     
-    #- name: Terraform Refresh
-     # run: terraform refresh
+    - name: Terraform Refresh
+      run: terraform refresh
 
-    #- name: Terraform Apply (auto-approve)
-     # run: terraform apply -auto-approve
+    - name: Terraform Apply (auto-approve)
+      run: terraform apply -auto-approve
    
